@@ -1,0 +1,22 @@
+{
+  "name": "loginUtil",
+  "version": "1.0.0",
+  "description": "Utils for developing the loginFrontend",
+  "main": "server.js",
+  "author": "Erhard Karger",
+  "license": "MIT",
+  
+  "scripts": {
+    "serve": "node server.js"
+  },
+
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0"
+  }
+
+
+
+}

@@ -1,0 +1,131 @@
+
+<template>
+<div :style="style">
+    <!-- Render textfield component -->
+    <div class="mdc-card mdc-typography container">
+        <h3 class="mdc-typography--headline2">Login</h3>
+
+
+
+        <div class="mdc-text-field  username mdc-text-field--focused"   ref="userName" >
+            <input type="text" class="mdc-text-field__input" 
+            id="username-input" name="user"
+            v-model="user" v-on:keyup="checkForm"      >
+            <label class="mdc-floating-label" for="username-input">Username</label>
+            <div class="mdc-line-ripple"></div>
+        </div>
+        <p class="mdc-text-field-helper-text" >
+        <span  v-if="user_error" style="color: red">
+            {{ user_error_message }}
+        </span>
+        </p>
+
+
+        <div class="mdc-text-field password" ref="pwd">
+            <input type="password" class="mdc-text-field__input" 
+            id="password-input" name="password"
+            v-model="password" v-on:keyup="checkForm"
+            >
+            <label class="mdc-floating-label" for="password-input">Password</label>
+        </div>
+        <div class="mdc-card__actions">
+            <button :disabled="submit_disabled" class="mdc-button mdc-button--raised mdc-card__action--button" ref="sendButton"
+                @click="my_login" >
+                <span class="mdc-button__label">login</span>
+            </button>
+
+        </div>
+    </div>
+</div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import {MDCTextField} from '@material/textfield';
+import {MDCRipple} from '@material/ripple';
+export default Vue.extend(  {
+    data() {
+        return {
+            user: '',
+            password: '',
+            submit_disabled: true,
+            user_error: false,
+            user_error_message: "",
+            password_error: false,
+            password_message: ""  
+        };
+    },
+    methods: {
+        my_login() {
+            this.$emit('clicked', {"data": "datafrom innerMost"});
+        },
+        checkForm(event) {
+            if(this.user.length < 6){
+              this.user_error=true;
+              this.user_error_message = "Username zu kurz";
+            }
+            else
+            {
+              this.user_error=false;
+              this.user_error_message = "";
+            }
+         if (this.user.length > 6 && this.password.length > 6) {
+             this.submit_disabled = false;
+           }
+         if(this.password.length < 6){
+              this.password_error=true;
+              this.password_error_message = "Password zu kurz";
+            }
+          else
+            {
+              this.password_error=false;
+              this.password_error_message = "";
+            }
+         if (this.user.length > 6 && this.password.length > 6) {
+             this.submit_disabled = false;
+          }
+    },
+
+
+
+    mounted() { 
+        new MDCTextField(this.$refs.userName);
+        new MDCTextField(this.$refs.pwd);
+        new MDCRipple(this.$refs.sendButton); 
+    },
+    computed:{
+        style() {
+            let register = this.register;
+            let backend = this.backend;
+            return backend;
+        }, 
+    },
+    props: {
+        backend: String,
+        register: String,
+    }
+}  
+);
+
+
+
+
+
+</script>
+<!-- Default behavior of this component -->
+<!-- Only importing the css needed not more -->
+<!-- The imports are treated by webpack >>>>>> the assets-Dir is preprocessed by webpack-->
+<style >
+@import '../assets/mdc.textfield.css';
+@import '../assets/mdc.floating-label.css';
+@import '../assets/mdc.line-ripple.css';
+@import '../assets/mdc.button.css';
+@import '../assets/mdc.card.css';
+@import '../assets/mdc.typography.css';
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+color: var(--mdc-floating-label-focused, black);
+.container {
+ display:   flex;
+}
+</style>
+

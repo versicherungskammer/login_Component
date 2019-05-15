@@ -1,0 +1,41 @@
+{
+  "name": "login",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "debug": "node --inspect-brk=0.0.0.0 ./node_modules/.bin/vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "@material/button": "^0.44.0",
+    "@material/card": "^0.44.0",
+    "@material/textfield": "^0.43.1",
+    "@material/theme": "^0.43.0",
+    "@material/typography": "^0.44.0",
+    "@types/material__textfield": "^0.35.0",
+    "http-server": "^0.11.1",
+    "material-design-icons": "^3.0.1",
+    "unfetch": "^4.0.1",
+    "vue": "^2.5.21",
+    "vue-class-component": "^6.0.0",
+    "vue-material-design-icons": "^3.0.0",
+    "vue-property-decorator": "^7.0.0",
+    "vuetify": "^1.4.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.1.4",
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-typescript": "^3.3.0",
+    "@vue/cli-plugin-unit-jest": "^3.3.0",
+    "@vue/cli-service": "^3.3.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "ts-jest": "^23.0.0",
+    "typescript": "^3.0.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}
